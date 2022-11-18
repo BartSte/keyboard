@@ -1,2 +1,2 @@
 # keyboard
-Keyboardio Atreus and Arduino 
+Keyboardio Atreus and Arduino CLI
