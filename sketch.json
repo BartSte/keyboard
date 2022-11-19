@@ -1,6 +1,6 @@
 {
   "cpu": {
     "fqbn": "keyboardio:avr:keyboardio_atreus",
-    "port": ""
+    "port": "/dev/ttyACM0"
   }
 }
