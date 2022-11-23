@@ -6,50 +6,15 @@
 #include <Kaleidoscope-FocusSerial.h>
 #include <Kaleidoscope.h>
 
-#define MO(n) ShiftToLayer(n)
-
-#define Key_Tilde LSHIFT(Key_Backtick)
-#define Key_Exclamation LSHIFT(Key_1)
-#define Key_At LSHIFT(Key_2)
-#define Key_Hash LSHIFT(Key_3)
-#define Key_Dollar LSHIFT(Key_4)
-#define Key_Percent LSHIFT(Key_5)
-#define Key_Caret LSHIFT(Key_6)
-#define Key_And LSHIFT(Key_7)
-#define Key_Star LSHIFT(Key_8)
-#define Key_RightParen LSHIFT(Key_9)
-#define Key_LeftParen LSHIFT(Key_0)
-#define Key_Underscore LSHIFT(Key_Minus)
-#define Key_Plus LSHIFT(Key_Equals)
-
-#define Key_LeftCurlyBrace LSHIFT(Key_LeftBracket)
-#define Key_RightCurlyBrace LSHIFT(Key_RightBracket)
-#define Key_DubQuote LSHIFT(Key_Quote)
-
-#define Key_BrDecr Consumer_DisplayBrightnessDecrement
-#define Key_BrIncr Consumer_DisplayBrightnessIncrement
-#define Key_VolDecr Consumer_VolumeDecrement
-#define Key_VolIncr Consumer_VolumeIncrement
-
-#define Key_SwitchDisplay LGUI(LSHIFT(Key_RightArrow))
-#define ___ Key_Transparent
-
-#define Key_RCtrl Key_RightControl
-#define Key_RShift Key_RightShift
-#define Key_RAlt Key_RightAlt
-#define Key_RGui Key_RightGui
-#define Key_LCtrl Key_LeftControl
-#define Key_LShift Key_LeftShift
-#define Key_LAlt Key_LeftAlt
-#define Key_LGui Key_LeftGui
+#include "keys.h"
 
 enum {
-    COLEMAK_DH,
-    SYMBOLS,
-    NUMPAD,
-    NAVIGATION_RIGHT,
-    NAVIGATION_LEFT,
-    F_KEYS
+  COLEMAK_DH,
+  SYMBOLS,
+  NUMPAD,
+  NAVIGATION_LEFT,
+  NAVIGATION_RIGHT,
+  F_KEYS
 };
 
 // clang-format off
@@ -88,48 +53,48 @@ KEYMAPS(
     ___         ,___        ,___        ,___        ,___    ,___,
     ___         ,___        ,___        ,___        ,___    ,___,
 
-                 ___        ,Key_7      ,Key_8      ,Key_9  ,___,
-                 ___        ,Key_4      ,Key_5      ,Key_6  ,___,
-    ___         ,___        ,Key_1      ,Key_2      ,Key_3  ,___,
-    ___         ,___        ,___        ,___        ,___    ,___
-    ),
-
-[NAVIGATION_RIGHT] = KEYMAP_STACKED(
-
-    ___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___   ,___,
-
-           ___   ,___   ,___   ,___   ,___,
-           ___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___   ,___
+                 Key_Star       ,Key_7      ,Key_8      ,Key_9      ,Key_Plus,
+                 Key_Backslash  ,Key_4      ,Key_5      ,Key_6      ,Key_Minus,
+    ___         ,Key_Pipe       ,Key_1      ,Key_2      ,Key_3      ,Key_Enter,
+    Key_And     ,Key_Equals     ,Key_0      ,Key_Comma  ,Key_Period ,Key_Enter
     ),
 
 [NAVIGATION_LEFT] = KEYMAP_STACKED(
 
-    ___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___   ,___,
+    ___   ,___   ,Key_A     ,___        ,___,
+    ___   ,___   ,Key_A     ,Key_A      ,___,
+    ___   ,Key_A ,___       ,___        ,___      ,___,
+    ___   ,___   ,___       ,___        ,___      ,___,
 
-           ___   ,___   ,___   ,___   ,___,
-           ___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___   ,___
+           ___   ,___       ,___        ,___      ,___,
+           ___   ,Key_RCtrl ,Key_RShift ,Key_RAlt ,Key_RGui,
+    ___   ,___   ,___       ,___        ,___      ,___,
+    ___   ,___   ,___       ,___        ,___      ,___
+    ),
+
+[NAVIGATION_RIGHT] = KEYMAP_STACKED(
+
+    ___         ,___        ,___        ,___        ,___,
+    Key_LGui    ,Key_LAlt   ,Key_LShift ,Key_LCtrl  ,___,
+    ___         ,___        ,___        ,___        ,___ ,___,
+    ___         ,___        ,___        ,___        ,___ ,___,
+
+          Key_Home      ,Key_PageDown  ,Key_PageUp   ,Key_End        ,Key_Play,
+          Key_LeftArrow ,Key_DownArrow ,Key_UpArrow  ,Key_RightArrow ,Key_Next,
+    ___   ,___          ,Key_A         ,Key_A        ,Key_A          ,Key_Prev,
+    ___   ,___          ,___           ,RALT(Key_F4) ,___            ,___
     ),
 
 [F_KEYS] = KEYMAP_STACKED(
 
-    ___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___   ,___,
+    ___      ,___      ,___        ,___       ,___,
+    Key_LGui ,Key_LAlt ,Key_LShift ,Key_LCtrl ,___,
+    ___      ,___      ,___        ,___       ,___   ,___,
+    ___      ,___      ,___        ,___       ,___   ,___,
 
-           ___   ,___   ,___   ,___   ,___,
-           ___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___   ,___,
-    ___   ,___   ,___   ,___   ,___   ,___
+         ___ ,Key_F7 ,Key_F8 ,Key_F9 ,Key_F10,
+         ___ ,Key_F4 ,Key_F5 ,Key_F6 ,Key_F11,
+    ___ ,___ ,Key_F1 ,Key_F2 ,Key_F3 ,Key_F12,
+    ___ ,___ ,___    ,___    ,___    ,___
     )
 )

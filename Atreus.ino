@@ -11,6 +11,10 @@
 #include <Kaleidoscope-Macros.h>
 #include "keymaps.h"
 
+/* TODO: */
+/* - Add homerow modifiers */
+/* - Add Macros */
+
 KALEIDOSCOPE_INIT_PLUGINS(
   EEPROMSettings,
   EEPROMKeymap,
