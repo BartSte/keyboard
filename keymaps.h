@@ -38,12 +38,12 @@ KEYMAPS(
     Key_Exclamation      ,Key_At             ,Key_Hash        ,Key_Dollar   ,Key_Percent,
     Key_LeftCurlyBrace   ,Key_LeftBracket    ,Key_LeftParen   ,Key_Quote    ,Key_Backtick,
     Key_RightCurlyBrace  ,Key_RightBracket   ,Key_RightParen  ,Key_DubQuote ,Key_Tilde        ,Key_PrintScreen,
-    ___                  ,___                ,___             ,Key_Equals   ,Key_Underscore   ,Key_Caret,
+    ___                  ,___                ,___             ,Key_Equals   ,Key_Underscore   ,___,
 
-           ___   ,___       ,___        ,___        ,___,
-           ___   ,Key_RCtrl ,Key_RShift ,Key_RAlt   ,Key_RGui,
-    ___   ,___   ,___       ,___        ,___        ,___,
-    ___   ,___   ,___       ,___        ,___        ,___
+                         ___                 ,___             ,___          ,___              ,___,
+                         ___                 ,Key_RCtrl       ,Key_RShift   ,Key_RAlt         ,Key_RGui,
+    ___                 ,___                 ,___             ,___          ,___              ,___,
+    ___                 ,___                 ,___             ,___          ,___              ,___
     ),
 
 [NUMPAD] = KEYMAP_STACKED(
@@ -55,8 +55,8 @@ KEYMAPS(
 
                  Key_Star       ,Key_7      ,Key_8      ,Key_9      ,Key_Plus,
                  Key_Backslash  ,Key_4      ,Key_5      ,Key_6      ,Key_Minus,
-    ___         ,Key_Pipe       ,Key_1      ,Key_2      ,Key_3      ,Key_Enter,
-    Key_And     ,Key_Equals     ,Key_0      ,Key_Comma  ,Key_Period ,Key_Enter
+    ___         ,Key_Pipe       ,Key_1      ,Key_2      ,Key_3      ,Key_And,
+    ___         ,Key_Equals     ,Key_0      ,___        ,___        ,___
     ),
 
 [NAVIGATION_LEFT] = KEYMAP_STACKED(
@@ -92,9 +92,9 @@ KEYMAPS(
     ___      ,___      ,___        ,___       ,___   ,___,
     ___      ,___      ,___        ,___       ,___   ,___,
 
-         ___ ,Key_F7 ,Key_F8 ,Key_F9 ,Key_F10,
-         ___ ,Key_F4 ,Key_F5 ,Key_F6 ,Key_F11,
-    ___ ,___ ,Key_F1 ,Key_F2 ,Key_F3 ,Key_F12,
-    ___ ,___ ,___    ,___    ,___    ,___
+         Key_Pause      ,Key_F7 ,Key_F8 ,Key_F9 ,Key_F10,
+         Key_ScrollLock ,Key_F4 ,Key_F5 ,Key_F6 ,Key_F11,
+    ___ ,Key_Insert     ,Key_F1 ,Key_F2 ,Key_F3 ,Key_F12,
+    ___ ,___            ,___    ,___    ,___    ,___
     )
 )
