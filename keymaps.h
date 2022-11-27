@@ -1,21 +1,10 @@
 #pragma once
 
-#include <Kaleidoscope-EEPROM-Keymap.h>
-#include <Kaleidoscope-EEPROM-Settings.h>
-#include <Kaleidoscope-FirmwareVersion.h>
-#include <Kaleidoscope-FocusSerial.h>
 #include <Kaleidoscope.h>
 
+#include "layers.h"
 #include "keys.h"
-
-enum {
-  COLEMAK_DH,
-  SYMBOLS,
-  NUMPAD,
-  NAVIGATION_LEFT,
-  NAVIGATION_RIGHT,
-  F_KEYS
-};
+#include "macros.h"
 
 // clang-format off
 KEYMAPS(
@@ -38,7 +27,7 @@ KEYMAPS(
     Key_Exclamation      ,Key_At             ,Key_Hash        ,Key_Dollar   ,Key_Percent,
     Key_LeftCurlyBrace   ,Key_LeftBracket    ,Key_LeftParen   ,Key_Quote    ,Key_Backtick,
     Key_RightCurlyBrace  ,Key_RightBracket   ,Key_RightParen  ,Key_DubQuote ,Key_Tilde        ,Key_PrintScreen,
-    ___                  ,___                ,___             ,Key_Equals   ,Key_Underscore   ,___,
+    ___                  ,___                ,___             ,M(M_EQUALS)  ,Key_Underscore   ,___,
 
                          ___                 ,___             ,___          ,___              ,___,
                          ___                 ,Key_RCtrl       ,Key_RShift   ,Key_RAlt         ,Key_RGui,
@@ -97,4 +86,5 @@ KEYMAPS(
     ___ ,Key_Insert     ,Key_F1 ,Key_F2 ,Key_F3 ,Key_F12,
     ___ ,___            ,___    ,___    ,___    ,___
     )
-)
+);
+// clang-format on

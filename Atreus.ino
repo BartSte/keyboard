@@ -11,13 +11,11 @@
 #include <Kaleidoscope-Macros.h>
 #include <Kaleidoscope-Qukeys.h>
 
-#include "keymaps.h"
+#include "layers.h"
+#include "keys.h"
+#include "macros.h"
 #include "qukeys.h"
-
-/* TODO: */
-/* - Add Macros */
-
-using namespace kaleidoscope;
+#include "keymaps.h"
 
 KALEIDOSCOPE_INIT_PLUGINS(
   Qukeys,  // Qukeys must be first
@@ -27,10 +25,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
   FocusEEPROMCommand,
   FocusSettingsCommand,
   Macros,
-  FirmwareVersion)
+  FirmwareVersion);
 
 void setup() {
-  MYQUKEYS;
+  setup_qukeys();
   Kaleidoscope.setup();
   EEPROMKeymap.setup(6);
   Layer.move(EEPROMSettings.default_layer());

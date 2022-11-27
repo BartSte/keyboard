@@ -1,0 +1,11 @@
+#pragma once
+
+enum {
+  COLEMAK_DH,
+  SYMBOLS,
+  NUMPAD,
+  NAVIGATION_LEFT,
+  NAVIGATION_RIGHT,
+  F_KEYS
+};
+

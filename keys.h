@@ -1,4 +1,6 @@
-#define MO(n) ShiftToLayer(n)
+#pragma once
+
+#include <Kaleidoscope.h>
 
 #define Key_Tilde LSHIFT(Key_Backtick)
 #define Key_Exclamation LSHIFT(Key_1)
