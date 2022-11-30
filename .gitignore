@@ -3,4 +3,4 @@ nvim.shada
 
 .git/
 build/
-
+.clang-format
