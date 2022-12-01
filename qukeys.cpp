@@ -21,6 +21,6 @@ void setup_qukeys(){
     plugin::Qukey(0, KeyAddr(3, 2), ShiftToLayer(F_KEYS)),
     plugin::Qukey(0, KeyAddr(3, 3), ShiftToLayer(NAVIGATION_RIGHT)),
     plugin::Qukey(0, KeyAddr(3, 4), ShiftToLayer(NUMPAD)),
-    plugin::Qukey(0, KeyAddr(3, 8), ShiftToLayer(SYMBOLS)),
-    plugin::Qukey(0, KeyAddr(3, 9), ShiftToLayer(NAVIGATION_LEFT)))
+    plugin::Qukey(0, KeyAddr(3, 7), ShiftToLayer(SYMBOLS)),
+    plugin::Qukey(0, KeyAddr(3, 8), ShiftToLayer(NAVIGATION_LEFT)))
 }
