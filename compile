@@ -1,2 +1,2 @@
 #!/bin/bash
-arduino-cli compile --fqbn keyboardio:avr:keyboardio_atreus
+arduino-cli compile --fqbn keyboardio:avr:keyboardio_atreus $@ ~/code/Atreus/
