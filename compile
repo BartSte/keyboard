@@ -1,2 +1,21 @@
 #!/bin/bash
-arduino-cli compile --fqbn keyboardio:avr:keyboardio_atreus $@ ~/code/Atreus/
+
+get_script_directory() {
+    cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd
+}
+
+compile() {
+    arduino-cli compile --fqbn keyboardio:avr:keyboardio_atreus $@
+}
+
+directory=$(get_script_directory)
+path_personal_macros="$directory/personal_macros.h"
+if [ -f $path_personal_macros ]; then 
+    compile $@ $directory
+else
+    template="$directory/template_personal_macros.h"
+    cp $template $path_personal_macros
+    echo "Created personal_macros.h"
+    echo "Please finalize your personal macros."
+fi
+

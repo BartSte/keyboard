@@ -1,6 +1,6 @@
-.clangd
+.clang-format
 nvim.shada
+personal_macros.h
 
 .git/
 build/
-.clang-format
