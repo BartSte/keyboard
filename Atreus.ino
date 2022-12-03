@@ -1,22 +1,19 @@
-#ifndef BUILD_INFORMATION
-#define BUILD_INFORMATION "locally built on " __DATE__ " at " __TIME__
-#endif
-
 // clang-format off
 #include <Arduino.h>
 #include <Kaleidoscope.h>
-#include <Kaleidoscope-FocusSerial.h>
 #include <Kaleidoscope-Macros.h>
 #include <Kaleidoscope-Qukeys.h>
+// clang-format on
 
-#include "keys.h"
-#include "layers.h"
 #include "macros.h"
 #include "qukeys.h"
 #include "keymaps.h"
-// clang-format on
 
-KALEIDOSCOPE_INIT_PLUGINS(Qukeys, Focus, Macros); // Qukeys must be first
+KALEIDOSCOPE_INIT_PLUGINS(Qukeys, Macros); // Qukeys must be first
+
+const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
+    return my_macros(macro_id, event);
+}
 
 void setup() {
     setup_qukeys(); 

@@ -6,6 +6,7 @@
 #include <Kaleidoscope-Macros.h>
 // clang-format on
 
-enum { M_EQUALS, M_1, M_2, M_3, M_4, M_5, M_6, M_7, M_8 };
+enum { M_EQUALS, M_BART, M_STE, M_MAIL, M_NAME, M_WORK };
 
-const macro_t *macroAction(uint8_t macro_id, KeyEvent &event);
+const macro_t *my_macros(uint8_t macro_id, KeyEvent &event);
+

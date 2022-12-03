@@ -11,8 +11,8 @@
 #define Key_Caret LSHIFT(Key_6)
 #define Key_And LSHIFT(Key_7)
 #define Key_Star LSHIFT(Key_8)
-#define Key_RightParen LSHIFT(Key_9)
-#define Key_LeftParen LSHIFT(Key_0)
+#define Key_RightParen LSHIFT(Key_0)
+#define Key_LeftParen LSHIFT(Key_9)
 #define Key_Underscore LSHIFT(Key_Minus)
 #define Key_Plus LSHIFT(Key_Equals)
 

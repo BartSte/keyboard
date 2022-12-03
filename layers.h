@@ -6,6 +6,6 @@ enum {
   NUMPAD,
   NAVIGATION_LEFT,
   NAVIGATION_RIGHT,
-  F_KEYS
+  F_KEYS,
+  MACROS
 };
-

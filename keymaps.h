@@ -9,6 +9,7 @@
 // clang-format off
 KEYMAPS(
 
+
 [COLEMAK_DH] = KEYMAP_STACKED( 
     Key_Q                ,Key_W             ,Key_F           ,Key_P           ,Key_B,          
     Key_A                ,Key_R             ,Key_S           ,Key_T           ,Key_G,          
@@ -49,10 +50,10 @@ KEYMAPS(
 
 
 [NAVIGATION_LEFT] = KEYMAP_STACKED( 
-    ___                  ,___               ,Key_A           ,___             ,___,            
-    ___                  ,___               ,Key_A           ,Key_A           ,___,            
-    ___                  ,Key_A             ,___             ,___             ,___             ,___,
-    ___                  ,___               ,___             ,___             ,___             ,___,
+    Key_7                ,Key_8             ,Key_2          ,___             ,___,            
+    Key_6                ,___               ,Key_3          ,Key_1           ,___,            
+    ___                  ,Key_5             ,Key_4          ,___             ,___             ,___,
+    ___                  ,___               ,___            ,___             ,___             ,___,
     
                           ___               ,___             ,___             ,___             ,___,            
                           ___               ,Key_RCtrl       ,Key_RShift      ,Key_RAlt        ,Key_RGui,       
@@ -68,8 +69,8 @@ KEYMAPS(
     ___                  ,___               ,___             ,___             ,___             ,___,
     
                           Key_Home          ,Key_PageDown    ,Key_PageUp      ,Key_End         ,Key_Play,       
-                          Key_LeftArrow     ,Key_DownArrow   ,Key_UpArrow     ,Key_RightArrow  ,Key_Next,       
-    ___                  ,___               ,Key_A           ,Key_A           ,Key_A           ,Key_Prev,
+                          Key_LeftArrow     ,Key_DownArrow   ,Key_UpArrow     ,Key_RightArrow  ,___,       
+    ___                  ,___               ,___             ,Key_Prev        ,Key_Next        ,___,
     ___                  ,___               ,___             ,RALT(Key_F4)    ,___             ,___
 ),                                                                                         
 
@@ -84,6 +85,21 @@ KEYMAPS(
                           Key_ScrollLock    ,Key_F4          ,Key_F5          ,Key_F6          ,Key_F11,        
     ___                  ,Key_Insert        ,Key_F1          ,Key_F2          ,Key_F3          ,Key_F12,
     ___                  ,___               ,___             ,___             ,___             ,___
-)                                                                                          
+),                                                                                          
+
+
+[MACROS] = KEYMAP_STACKED(
+    ___                  ,M(M_WORK)         ,M(M_NAME)       ,___             ,M(M_BART),            
+    M(M_MAIL)            ,M(M_STE)          ,___             ,___             ,___,            
+    ___                  ,___               ,___             ,___             ,___             ,___,
+    ___                  ,___               ,___             ,___             ,___             ,___,
+    
+                          ___               ,___             ,___             ,___             ,___,
+                          ___               ,___             ,___             ,___             ,___,
+    ___                  ,___               ,___             ,___             ,___             ,___,
+    ___                  ,___               ,___             ,___             ,___             ,___
+)
+
+
 );                                                                                         
 // clang-format on
