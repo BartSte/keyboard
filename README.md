@@ -14,6 +14,17 @@ Follow the instructions on the site of kaleidoscope to enable compiling and
 uploading *.ino sketches to the keyboard.
 - <https://kaleidoscope.readthedocs.io/en/latest/quick_start.html>
 
+The `compile` script will do the following:
+- Create a header file that may contain macros with personal info. This header
+  need to be completed by the user before compiling. After creation, compilation
+  is aborted.
+- If the `personal_macros.h` file exists, `arduino-cli` will be called to
+  compile the sketch.
+
+Similarly to the compile script, the `upload` script uploads the firmware to the
+keyboard. Make sure you hold the left key on the bottom row during uploading.
+This will put the keyboard in "program mode".
+
 ### Tips
 - Factory reset the Atreus using Chrysalis before uploading sketches for the
   first time.
