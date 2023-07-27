@@ -90,8 +90,8 @@ KEYMAPS(
 
 [MACROS] = KEYMAP_STACKED(
     ___                  ,M(M_WORK)         ,M(M_NAME)       ,M(M_PHONE)      ,M(M_BART),            
-    M(M_MAIL)            ,M(M_STE)          ,___             ,___             ,___,            
-    ___                  ,___               ,___             ,___             ,___             ,___,
+    M(M_MAIL)            ,___               ,M(M_STE)        ,___             ,M(M_GMAIL),            
+    M(M_PWE)             ,M(M_PWL)          ,___             ,___             ,___             ,___,
     ___                  ,___               ,___             ,___             ,___             ,___,
     
                           ___               ,___             ,___             ,___             ,___,

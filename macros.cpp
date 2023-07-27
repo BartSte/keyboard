@@ -11,7 +11,7 @@ const macro_t *my_macros(uint8_t macro_id, KeyEvent &event) {
         switch (macro_id) {
         case M_EQUALS:
             return Macros.type(PSTR(" = "));
-        case M_BART: 
+        case M_BART:
             return Macros.type(PSTR("Bart"));
         case M_STE:
             return Macros.type(PSTR("Steensma"));
@@ -23,6 +23,12 @@ const macro_t *my_macros(uint8_t macro_id, KeyEvent &event) {
             return Macros.type(PSTR(WORK));
         case M_PHONE:
             return Macros.type(PSTR(PHONE));
+        case M_PWE:
+            return Macros.type(PSTR(PWE));
+        case M_PWL:
+            return Macros.type(PSTR(PWL));
+        case M_GMAIL:
+            return Macros.type(PSTR(GMAIL));
         default:
             return MACRO_NONE;
         }
