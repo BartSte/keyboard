@@ -1,5 +1,8 @@
 #pragma once 
 
-#define MAIL "<pesonal email>"
-#define WORK "<work email>"
-#define PHONE "<phone number>"
+#define GMAIL ""
+#define MAIL ""
+#define PHONE ""
+#define PWE ""
+#define PWL ""
+#define WORK ""
