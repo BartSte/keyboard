@@ -18,7 +18,7 @@ KEYMAPS(
     
                           Key_J             ,Key_L           ,Key_U           ,Key_Y           ,Key_Semicolon,  
                           Key_M             ,Key_N           ,Key_E           ,Key_I           ,Key_O,          
-    Key_Menu             ,Key_K             ,Key_H           ,Key_Comma       ,Key_Period      ,Key_Slash,
+    LSHIFT(Key_F10)      ,Key_K             ,Key_H           ,Key_Comma       ,Key_Period      ,Key_Slash,
     Key_SwitchDisplay    ,Key_Backspace     ,Key_Enter       ,Key_Delete      ,Key_VolDecr     ,Key_VolIncr
 ),                                                                                         
 
