@@ -4,5 +4,5 @@ sleep 2
 arduino-cli upload \
     --port /dev/ttyACM0 \
     --fqbn keyboardio:avr:keyboardio_atreus \
-    --verbose
+    --verbose "$@"
 echo "Done. You can let go of the Prog key now."
