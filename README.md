@@ -32,6 +32,12 @@ Similarly to the compile script, the `upload` script uploads the firmware to the
 keyboard. Make sure you hold the left key on the bottom row during uploading.
 This will put the keyboard in "program mode".
 
+## Tags
+
+- Major increase means a breaking change.
+- Minor increase means a change in keymaps was done.
+- Patch increase means a code improvement
+
 ### Tips
 
 - Factory reset the Atreus using Chrysalis before uploading sketches for the
