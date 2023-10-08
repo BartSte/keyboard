@@ -70,7 +70,7 @@ KEYMAPS(
                           Key_Home          ,Key_PageDown    ,Key_PageUp      ,Key_End         ,Key_Play,       
                           Key_LeftArrow     ,Key_DownArrow   ,Key_UpArrow     ,Key_RightArrow  ,___,       
     ___                  ,___               ,___             ,Key_Prev        ,Key_Next        ,___,
-    ___                  ,___               ,___             ,RALT(Key_F4)    ,___             ,___
+    ___                  ,___               ,___             ,___             ,___             ,___
 ),                                                                                         
 
 
@@ -83,11 +83,11 @@ KEYMAPS(
                           Key_Pause         ,Key_F7          ,Key_F8          ,Key_F9          ,Key_F10,        
                           Key_ScrollLock    ,Key_F4          ,Key_F5          ,Key_F6          ,Key_F11,        
     ___                  ,Key_Insert        ,Key_F1          ,Key_F2          ,Key_F3          ,Key_F12,
-    ___                  ,M(M_EQUALS)       ,___             ,___             ,___             ,___
+    ___                  ,___               ,___             ,___             ,___             ,___
 ),                                                                                          
 
 
-[MACROS] = KEYMAP_STACKED(
+[MACROS_LEFT] = KEYMAP_STACKED(
     ___                  ,M(M_WORK)         ,M(M_NAME)       ,M(M_PHONE)      ,M(M_BART),            
     M(M_MAIL)            ,___               ,M(M_STE)        ,___             ,M(M_GMAIL),            
     M(M_PWE)             ,M(M_PWL)          ,___             ,___             ,___             ,___,
@@ -97,8 +97,21 @@ KEYMAPS(
                           ___               ,___             ,___             ,___             ,___,
     ___                  ,___               ,___             ,___             ,___             ,___,
     ___                  ,___               ,___             ,___             ,___             ,___
+),
+
+[MACROS_RIGHT] = KEYMAP_STACKED(
+    ___                  ,___               ,___             ,___             ,___,            
+    ___                  ,___               ,___             ,___             ,___,            
+    ___                  ,___               ,___             ,___             ,___             ,___,
+    ___                  ,___               ,___             ,___             ,___             ,___,
+    
+                          ___               ,___             ,___             ,___             ,___,
+                          ___               ,___             ,___             ,___             ,___,
+    ___                  ,___               ,___             ,___             ,___             ,___,
+    ___                  ,M(M_EQUALS)       ,___             ,RALT(Key_F4)    ,___             ,___
 )
 
 
-);                                                                                         
+);
 // clang-format on
+
