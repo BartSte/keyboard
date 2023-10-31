@@ -9,7 +9,6 @@
 // clang-format off
 KEYMAPS(
 
-
 [COLEMAK_DH] = KEYMAP_STACKED( 
     Key_Q                ,Key_W             ,Key_F           ,Key_P           ,Key_B,          
     Key_A                ,Key_R             ,Key_S           ,Key_T           ,Key_G,          
@@ -27,7 +26,7 @@ KEYMAPS(
     Key_Exclamation      ,Key_At            ,Key_Hash        ,Key_Dollar      ,Key_Percent,    
     Key_LeftCurlyBrace   ,Key_LeftBracket   ,Key_LeftParen   ,Key_Quote       ,Key_Backtick,   
     Key_RightCurlyBrace  ,Key_RightBracket  ,Key_RightParen  ,Key_DubQuote    ,Key_Tilde       ,Key_PrintScreen,
-    ___                  ,___               ,___             ,M(M_EQUALS)     ,Key_Underscore  ,___,
+    ___                  ,___               ,___             ,Key_Caret       ,Key_Underscore  ,___,
     
                           ___               ,___             ,___             ,___             ,___,            
                           ___               ,Key_RCtrl       ,Key_RShift      ,Key_RAlt        ,Key_RGui,       
@@ -45,7 +44,7 @@ KEYMAPS(
                           Key_Star          ,Key_7           ,Key_8           ,Key_9           ,Key_Plus,       
                           Key_Backslash     ,Key_4           ,Key_5           ,Key_6           ,Key_Minus,      
     ___                  ,Key_Pipe          ,Key_1           ,Key_2           ,Key_3           ,Key_And,
-    ___                  ,Key_Equals        ,Key_0           ,___             ,___             ,___
+    ___                  ,Key_Equals        ,Key_0           ,Key_Comma       ,Key_Period      ,___
 ),                                                                                         
 
 
@@ -71,7 +70,7 @@ KEYMAPS(
                           Key_Home          ,Key_PageDown    ,Key_PageUp      ,Key_End         ,Key_Play,       
                           Key_LeftArrow     ,Key_DownArrow   ,Key_UpArrow     ,Key_RightArrow  ,___,       
     ___                  ,___               ,___             ,Key_Prev        ,Key_Next        ,___,
-    ___                  ,___               ,___             ,RALT(Key_F4)    ,___             ,___
+    ___                  ,___               ,___             ,___             ,___             ,___
 ),                                                                                         
 
 
@@ -88,7 +87,7 @@ KEYMAPS(
 ),                                                                                          
 
 
-[MACROS] = KEYMAP_STACKED(
+[MACROS_LEFT] = KEYMAP_STACKED(
     ___                  ,M(M_WORK)         ,M(M_NAME)       ,M(M_PHONE)      ,M(M_BART),            
     M(M_MAIL)            ,___               ,M(M_STE)        ,___             ,M(M_GMAIL),            
     M(M_PWE)             ,M(M_PWL)          ,___             ,___             ,___             ,___,
@@ -98,8 +97,21 @@ KEYMAPS(
                           ___               ,___             ,___             ,___             ,___,
     ___                  ,___               ,___             ,___             ,___             ,___,
     ___                  ,___               ,___             ,___             ,___             ,___
+),
+
+[MACROS_RIGHT] = KEYMAP_STACKED(
+    ___                  ,___               ,___             ,___             ,___,            
+    ___                  ,___               ,___             ,___             ,___,            
+    ___                  ,___               ,___             ,___             ,___             ,___,
+    ___                  ,___               ,___             ,___             ,___             ,___,
+    
+                          ___               ,___             ,___             ,___             ,___,
+                          ___               ,___             ,___             ,___             ,___,
+    ___                  ,___               ,___             ,___             ,___             ,___,
+    ___                  ,M(M_EQUALS)       ,___             ,RALT(Key_F4)    ,___             ,___
 )
 
 
-);                                                                                         
+);
 // clang-format on
+
