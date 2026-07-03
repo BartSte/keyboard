@@ -1,8 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+get_script_directory() {
+    cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd
+}
+
+directory=$(get_script_directory)
+
 echo "Hold down the Prog key on your keyboard now and keep it down."
 sleep 2
 arduino-cli upload \
     --port /dev/ttyACM0 \
     --fqbn keyboardio:avr:keyboardio_atreus \
-    --verbose "$@"
+    --verbose "$@" "$directory"
 echo "Done. You can let go of the Prog key now."

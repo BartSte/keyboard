@@ -37,7 +37,7 @@ directories:
 library:
   enable_unsafe_install: false
 logging:
-  file:
+  file: ""
   format: text
   level: debug
 metrics:
@@ -63,7 +63,7 @@ uploading \*.ino sketches to the keyboard.
 The `compile` script will do the following:
 
 - Create a header file that may contain macros with personal info. This header
-  need to be completed by the user before compiling. After creation, compilation
+  needs to be completed by the user before compiling. After creation, compilation
   is aborted.
 - If the `personal_macros.h` file exists, `arduino-cli` will be called to
   compile the sketch.
@@ -106,16 +106,18 @@ you can solve this in two ways:
   - `s`: `Shift`
   - `t`: `Ctrl`
   - `n`: `Ctrl`
-  - `e`: `Alt`
-  - `i`: `Shift`
+  - `e`: `Shift`
+  - `i`: `Alt`
   - `o`: `Win`
 
 - Move to layer on hold:
   - `f`: `Numpad`
   - `u`: `Symbols`
-  - `Tab`: `Navigation`
-  - `Enter`: `Navigation`
+  - `Tab`: `Navigation right`
+  - `Enter`: `Navigation left`
   - `g`: `F-keys`
+  - `d`: `Macros right`
+  - `h`: `Macros left`
 
 
 ```plaintext
@@ -127,9 +129,9 @@ you can solve this in two ways:
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  │  Z  │  X  │  C  │  D  │  V  │             │  K  │  H  │  ,  │  .  │  /  │
  ├─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┤
- │ Br+ │ Br- │ Esc │ Tab │ Sp  │ Cps │ │ Mnu │ BkS │ Ent │ Del │ Vl+ │ Vl- │
+ │ Br+ │ Br- │ Esc │ Tab │ Sp  │ Cps │ │ Dsp │ BkS │ Ent │ Del │ Vl- │ Vl+ │
  └─────┴─────┴─────┴─────┴─────┴─────┘ └─────┴─────┴─────┴─────┴─────┴─────┘
-                   
+
  ### Symbols Layer
  ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
  │  !  │  @  │  #  │  $  │  %  │             │     │     │     │     │     │
@@ -140,19 +142,19 @@ you can solve this in two ways:
  ├─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┤
  │     │     │     │  ^  │  _  │     │ │     │     │     │     │     │     │
  └─────┴─────┴─────┴─────┴─────┴─────┘ └─────┴─────┴─────┴─────┴─────┴─────┘
- 
+
  ### Numpad Layer
  ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
  │     │     │     │     │     │             │  *  │  7  │  8  │  9  │  +  │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  │     │     │     │     │     │             │  \  │  4  │  5  │  6  │  -  │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │     │     │     │     │     │             │  |  │  1  │  2  │  3  │  =  │
+ │     │     │     │     │     │             │  |  │  1  │  2  │  3  │  &  │
  ├─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┤
- │     │     │     │     │     │     │ │     │  =  │  0  │     │     │     │
+ │     │     │     │     │     │     │ │     │  =  │  0  │  ,  │  .  │     │
  └─────┴─────┴─────┴─────┴─────┴─────┘ └─────┴─────┴─────┴─────┴─────┴─────┘
- 
- ### Navigation Layer
+
+ ### Navigation Right Layer
  ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
  │     │     │     │     │     │             │ Home│PgDwn│PgUp │ End │Play │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
@@ -162,7 +164,18 @@ you can solve this in two ways:
  ├─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┤
  │     │     │     │     │     │     │ │     │     │     │     │     │     │
  └─────┴─────┴─────┴─────┴─────┴─────┘ └─────┴─────┴─────┴─────┴─────┴─────┘
- 
+
+ ### Navigation Left Layer
+ ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
+ │     │  7  │  2  │     │     │             │     │     │     │     │     │
+ ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ │  6  │     │  3  │  1  │     │             │     │     │     │     │     │
+ ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ │     │  5  │  4  │     │     │             │     │     │     │     │     │
+ ├─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┤
+ │     │     │     │     │     │     │ │     │     │     │     │     │     │
+ └─────┴─────┴─────┴─────┴─────┴─────┘ └─────┴─────┴─────┴─────┴─────┴─────┘
+
  ### Function Keys Layer
  ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
  │     │     │     │     │     │             │  F7 │  F8 │  F9 │ F10 │     │
