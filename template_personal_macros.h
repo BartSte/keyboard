@@ -1,7 +1,7 @@
 #pragma once 
 
-#define GMAIL ""
 #define MAIL ""
+#define OWORK ""
 #define PHONE ""
 #define PWE ""
 #define PWL ""

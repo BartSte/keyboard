@@ -2,8 +2,8 @@
 
 #include <Kaleidoscope.h>
 
-#include "layers.h"
 #include "keys.h"
+#include "layers.h"
 #include "macros.h"
 
 // clang-format off
@@ -49,7 +49,7 @@ KEYMAPS(
 
 
 [NAVIGATION_LEFT] = KEYMAP_STACKED( 
-    Key_7                ,Key_8             ,Key_2          ,___             ,___,            
+    ___                  ,Key_7             ,Key_2          ,___             ,___,
     Key_6                ,___               ,Key_3          ,Key_1           ,___,            
     ___                  ,Key_5             ,Key_4          ,___             ,___             ,___,
     ___                  ,___               ,___            ,___             ,___             ,___,
@@ -89,14 +89,14 @@ KEYMAPS(
 
 [MACROS_LEFT] = KEYMAP_STACKED(
     ___                  ,M(M_WORK)         ,M(M_NAME)       ,M(M_PHONE)      ,M(M_BART),            
-    M(M_MAIL)            ,___               ,M(M_STE)        ,___             ,M(M_GMAIL),            
+    M(M_MAIL)            ,___               ,M(M_STE)        ,___             ,___,
     M(M_PWE)             ,M(M_PWL)          ,___             ,___             ,___             ,___,
     ___                  ,___               ,___             ,___             ,___             ,___,
     
                           ___               ,___             ,___             ,___             ,___,
                           ___               ,___             ,___             ,___             ,___,
     ___                  ,___               ,___             ,___             ,___             ,___,
-    ___                  ,___               ,___             ,___             ,___             ,___
+    ___                  ,___               ,M(M_OWORK)      ,___             ,___             ,___
 ),
 
 [MACROS_RIGHT] = KEYMAP_STACKED(
@@ -114,4 +114,3 @@ KEYMAPS(
 
 );
 // clang-format on
-

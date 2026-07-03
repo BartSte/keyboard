@@ -27,8 +27,8 @@ const macro_t *my_macros(uint8_t macro_id, KeyEvent &event) {
             return Macros.type(PSTR(PWE));
         case M_PWL:
             return Macros.type(PSTR(PWL));
-        case M_GMAIL:
-            return Macros.type(PSTR(GMAIL));
+        case M_OWORK:
+            return Macros.type(PSTR(OWORK));
         default:
             return MACRO_NONE;
         }
