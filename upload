@@ -6,11 +6,63 @@ get_script_directory() {
 }
 
 directory=$(get_script_directory)
+fqbn="keyboardio:avr:keyboardio_atreus"
+build_directory="$directory/build/${fqbn//:/.}"
+hex_file="$build_directory/keyboard.ino.hex"
+port="${UPLOAD_PORT:-}"
+
+find_upload_port() {
+    local candidate
+
+    for candidate in /dev/ttyACM* /dev/ttyUSB*; do
+        if [ -e "$candidate" ]; then
+            echo "$candidate"
+            return 0
+        fi
+    done
+
+    return 1
+}
+
+is_wsl() {
+    grep -qi microsoft /proc/version
+}
+
+if [ ! -f "$hex_file" ]; then
+    echo "Compiled sketch not found: $hex_file"
+    echo "Run ./compile first, then retry upload."
+    exit 1
+fi
 
 echo "Hold down the Prog key on your keyboard now and keep it down."
 sleep 2
+
+if [ -z "$port" ]; then
+    echo "Waiting for keyboard upload port..."
+    deadline=$((SECONDS + 30))
+    while [ "$SECONDS" -lt "$deadline" ]; do
+        if port=$(find_upload_port); then
+            break
+        fi
+        sleep 1
+    done
+fi
+
+if [ -z "$port" ] || [ ! -e "$port" ]; then
+    echo "No keyboard upload port found."
+    echo "Hold Prog, check /dev/ttyACM* or /dev/ttyUSB*, then retry."
+    if is_wsl; then
+        echo "On WSL, either attach the USB device with usbipd-win or use a Windows COM mapping."
+        echo "Windows COM5 maps to /dev/ttyS5, COM6 maps to /dev/ttyS6, and so on."
+    fi
+    echo "Use UPLOAD_PORT=/dev/ttyACM1 ./upload if the keyboard uses another port."
+    exit 1
+fi
+
 arduino-cli upload \
-    --port /dev/ttyACM0 \
-    --fqbn keyboardio:avr:keyboardio_atreus \
-    --verbose "$@" "$directory"
+    --port "$port" \
+    --fqbn "$fqbn" \
+    --input-file "$hex_file" \
+    --discovery-timeout 30s \
+    --verbose "$@"
 echo "Done. You can let go of the Prog key now."

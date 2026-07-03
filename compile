@@ -5,11 +5,14 @@ get_script_directory() {
     cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd
 }
 
+directory=$(get_script_directory)
+fqbn="keyboardio:avr:keyboardio_atreus"
+build_directory="$directory/build/${fqbn//:/.}"
+
 compile() {
-    arduino-cli compile --fqbn keyboardio:avr:keyboardio_atreus "$@"
+    arduino-cli compile --fqbn "$fqbn" --output-dir "$build_directory" "$@"
 }
 
-directory=$(get_script_directory)
 path_personal_macros="$directory/personal_macros.h"
 if [ -f "$path_personal_macros" ]; then
     compile "$@" "$directory"

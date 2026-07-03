@@ -67,6 +67,8 @@ The `compile` script will do the following:
   is aborted.
 - If the `personal_macros.h` file exists, `arduino-cli` will be called to
   compile the sketch.
+- Write the uploadable HEX file to
+  `build/keyboardio.avr.keyboardio_atreus/keyboard.ino.hex`.
 
 ## Uploading
 
@@ -75,13 +77,36 @@ the keyboard. Make sure you hold the left key on the bottom row during
 uploading (in case of the Atreus). This will put the keyboard in "program
 mode".
 
-If you encounter a permission error for accessing the `/dev/ttyACM0` device,
+Run `./compile` before `./upload`. The upload script does not compile; it
+uploads the existing `build/keyboardio.avr.keyboardio_atreus/keyboard.ino.hex`
+file.
+
+If the keyboard appears on a different serial device, set `UPLOAD_PORT`:
+
+```bash
+sudo UPLOAD_PORT=/dev/ttyACM1 ./upload --config-file "$HOME/.arduino15/arduino-cli.yaml"
+```
+
+On WSL2, USB devices do not appear inside Linux automatically. Use one of
+these approaches:
+
+- Install `usbipd-win` on Windows, then attach the keyboard USB device to WSL.
+  After attachment, the keyboard should appear as `/dev/ttyACM*` or
+  `/dev/ttyUSB*`.
+- Use the Windows COM port mapping. For example, Windows `COM5` maps to
+  `/dev/ttyS5` in WSL:
+
+  ```bash
+  sudo UPLOAD_PORT=/dev/ttyS5 ./upload --config-file "$HOME/.arduino15/arduino-cli.yaml"
+  ```
+
+If you encounter a permission error for accessing the serial device,
 you can solve this in two ways:
 
 1. Run the script as root:
 
    ```bash
-    sudo ./upload --config-file $HOME/.arduino15/arduino-cli.yaml
+   sudo ./upload --config-file "$HOME/.arduino15/arduino-cli.yaml"
    ```
 
 2. Run the following command:
