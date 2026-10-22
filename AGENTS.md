@@ -12,11 +12,14 @@ This repo is a Keyboardio Atreus firmware sketch built with Arduino CLI and Kale
 - Keep README keymap notes and diagrams in sync with `keymaps.h` and `qukeys.cpp`.
 - Do not commit generated firmware artifacts from `build/`.
 - Do not run `./upload` unless explicitly asked; it targets `/dev/ttyACM0` and writes to the keyboard.
+- Do not run `./upload.ps1` unless explicitly asked; it writes to the keyboard through a Windows COM port.
 
 ## Validation
 
 - Run `git diff --check` before committing.
 - Run `./compile` after firmware changes.
+- Run PowerShell syntax checks for `*.ps1` after changing Windows helper scripts.
+- On Windows, `.\setup-windows.ps1` installs the `keyboardio:avr` core and `.\compile.ps1` should report the same memory usage as `./compile`.
 - If `arduino-cli` panics while parsing config, check that `logging.file` is an explicit string, for example `file: ""`, not a bare null value.
 - A normal successful build reports sketch and global variable memory usage.
 

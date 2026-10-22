@@ -7,22 +7,25 @@
 Follow the instructions on the website of Arduino to setup `arduino-cli`:
 
 - <https://arduino.github.io/arduino-cli/0.28/getting-started/>
-  On Arch, install `arduino-cli` by running:
+
+On Windows with Scoop:
+
+```powershell
+scoop install arduino-cli
+```
+
+On Arch, install `arduino-cli` by running:
 
 ```bash
 sudo pacman -S arduino-cli
 ```
 
-After this, you need to install your board. In my case, this is the Atreus of
-keyboardio. To install the board, run:
-
-```bash
-arduino-cli core install keyboardio:avr
-```
-
 ## Configuration
 
-Place the following config at `~/.arduino15/arduino-cli.yaml`:
+On Windows, `setup-windows.ps1`, `compile.ps1`, and `upload.ps1` use the
+Arduino CLI config at `%LOCALAPPDATA%\Arduino15\arduino-cli.yaml`.
+
+On Linux or WSL, place the following config at `~/.arduino15/arduino-cli.yaml`:
 
 ```yaml
 board_manager:
@@ -53,6 +56,21 @@ updater:
 
 Chances are that you need to change some details in the config file.
 
+## Install Keyboardio Core
+
+On Windows, run:
+
+```powershell
+.\setup-windows.ps1
+```
+
+On Linux or WSL, run:
+
+```bash
+arduino-cli core update-index
+arduino-cli core install keyboardio:avr
+```
+
 ## Compiling
 
 Follow the instructions on the site of kaleidoscope to enable compiling and
@@ -70,6 +88,15 @@ The `compile` script will do the following:
 - Write the uploadable HEX file to
   `build/keyboardio.avr.keyboardio_atreus/keyboard.ino.hex`.
 
+On Windows, use the PowerShell script instead:
+
+```powershell
+.\compile.ps1
+```
+
+Both scripts write the uploadable HEX file to
+`build/keyboardio.avr.keyboardio_atreus/keyboard.ino.hex`.
+
 ## Uploading
 
 Similarly to the compile script, the `upload` script uploads the firmware to
@@ -85,6 +112,22 @@ If the keyboard appears on a different serial device, set `UPLOAD_PORT`:
 
 ```bash
 sudo UPLOAD_PORT=/dev/ttyACM1 ./upload --config-file "$HOME/.arduino15/arduino-cli.yaml"
+```
+
+On Windows, use the PowerShell script with the keyboard's COM port:
+
+```powershell
+.\upload.ps1 -Port COM5
+```
+
+When more than one serial port is present, pass `-Port` explicitly. The script
+will not guess between multiple COM ports.
+
+If the port changes when the keyboard enters program mode, check Device Manager
+or run this PowerShell command while holding the Prog key:
+
+```powershell
+[System.IO.Ports.SerialPort]::GetPortNames()
 ```
 
 On WSL2, USB devices do not appear inside Linux automatically. Use one of
