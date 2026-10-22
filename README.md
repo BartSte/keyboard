@@ -130,18 +130,78 @@ or run this PowerShell command while holding the Prog key:
 [System.IO.Ports.SerialPort]::GetPortNames()
 ```
 
-On WSL2, USB devices do not appear inside Linux automatically. Use one of
-these approaches:
+### Build in WSL2 and upload from Windows
 
-- Install `usbipd-win` on Windows, then attach the keyboard USB device to WSL.
-  After attachment, the keyboard should appear as `/dev/ttyACM*` or
-  `/dev/ttyUSB*`.
-- Use the Windows COM port mapping. For example, Windows `COM5` maps to
-  `/dev/ttyS5` in WSL:
+WSL2 can build the firmware without access to the keyboard. Windows COM ports
+do not automatically map to `/dev/ttyS*` in WSL2. Use Windows PowerShell for
+the upload, or explicitly attach the USB device to WSL with `usbipd-win`.
 
-  ```bash
-  sudo UPLOAD_PORT=/dev/ttyS5 ./upload --config-file "$HOME/.arduino15/arduino-cli.yaml"
-  ```
+For a Windows upload, use this procedure:
+
+1. In WSL, build the firmware:
+
+   ```bash
+   cd /home/barts/code/personal/cpp/keyboard
+   ./compile
+   ```
+
+2. In WSL, prepare the files for Windows:
+
+   ```bash
+   ./prepare-windows-upload
+   ```
+
+   The helper copies the setup script, upload script, and existing HEX file
+   to `atreus-upload` inside your Windows temporary folder. It does not build
+   or upload firmware. It prints a `Set-Location` command for Windows PowerShell.
+   Open Windows PowerShell and run that command before the next step.
+
+   To choose another destination, pass its WSL path:
+
+   ```bash
+   ./prepare-windows-upload "/mnt/c/Users/Bart/Downloads/atreus-upload"
+   ```
+
+   The helper finds Windows PowerShell on `PATH`, or at its standard location
+   under `/mnt/c/Windows`. An explicit destination requires no PowerShell call.
+   The private macro header stays in WSL. The HEX file contains any macro text
+   that the firmware uses; keep it private too.
+
+3. On the first Windows upload, install Arduino CLI and the Keyboardio core:
+
+   ```powershell
+   scoop install arduino-cli
+   .\setup-windows.ps1
+   ```
+
+   Skip the Scoop command if Arduino CLI is already installed on Windows.
+   The Windows installation is separate from the installation in WSL.
+
+4. Hold the Atreus Prog key (the bottom-left key). Find its COM port in Device
+   Manager, or run this command while you hold the key:
+
+   ```powershell
+   [System.IO.Ports.SerialPort]::GetPortNames()
+   ```
+
+   Use the keyboard's port in program mode. It can differ from its normal port.
+   If several ports appear, identify the keyboard under Ports in Device Manager.
+
+5. Keep the Prog key held. Replace `COM5` with the keyboard's port and run:
+
+   ```powershell
+   .\upload.ps1 -Port COM5
+   ```
+
+   Release the Prog key after the script reports completion. Try the new layer
+   holds and a Meta-plus-number shortcut.
+
+For later updates, repeat the build, copy, port identification, and upload steps.
+The upload script uses the copied HEX file and does not rebuild it.
+
+Microsoft documents [access to WSL files from Windows](https://learn.microsoft.com/en-us/windows/wsl/filesystems)
+and the alternative [USB attachment procedure](https://learn.microsoft.com/en-us/windows/wsl/connect-usb).
+An attached USB device is unavailable to Windows until you detach it.
 
 If you encounter a permission error for accessing the serial device,
 you can solve this in two ways:

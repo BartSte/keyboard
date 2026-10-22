@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ "$#" -eq 1 ] && { [ "$1" = "--help" ] || [ "$1" = "-h" ]; }; then
+    printf '%s\n' 'Usage: ./prepare-windows-upload [destination-directory]'
+    printf '%s\n' 'Copy the Windows upload helpers and existing HEX file from WSL.'
+    printf '%s\n' 'The destination is a WSL path; the default is the Windows temporary folder under atreus-upload.'
+    exit 0
+fi
+
+if [ "$#" -gt 1 ] || { [ "$#" -eq 1 ] && [ -z "$1" ]; }; then
+    printf '%s\n' 'Usage: ./prepare-windows-upload [destination-directory]' >&2
+    exit 1
+fi
+
+directory=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+build_subdirectory='build/keyboardio.avr.keyboardio_atreus'
+hex_file="$directory/$build_subdirectory/keyboard.ino.hex"
+
+if [ ! -f "$hex_file" ]; then
+    printf '%s\n' 'Compiled sketch not found. Run ./compile first.' >&2
+    exit 1
+fi
+
+if ! command -v wslpath > /dev/null 2>&1; then
+    printf '%s\n' 'wslpath was not found. Run this helper from WSL.' >&2
+    exit 1
+fi
+
+if [ "$#" -eq 1 ]; then
+    destination=$1
+else
+    powershell=$(command -v powershell.exe || true)
+    if [ -z "$powershell" ] && [ -x /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe ]; then
+        powershell=/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
+    fi
+    if [ -z "$powershell" ]; then
+        printf '%s\n' 'Windows PowerShell was not found. Pass a Windows destination as a WSL path, such as /mnt/c/Users/Bart/Downloads/atreus-upload.' >&2
+        exit 1
+    fi
+
+    windows_temp=$("$powershell" -NoProfile -NonInteractive -Command '[System.IO.Path]::GetTempPath()')
+    windows_temp=${windows_temp//$'\r'/}
+    if [ -z "$windows_temp" ]; then
+        printf '%s\n' 'Windows PowerShell returned an empty temporary folder path.' >&2
+        exit 1
+    fi
+    destination="$(wslpath -u "$windows_temp")/atreus-upload"
+fi
+
+mkdir -p -- "$destination/$build_subdirectory"
+cp -- "$directory/setup-windows.ps1" "$directory/upload.ps1" "$destination/"
+cp -- "$hex_file" "$destination/$build_subdirectory/keyboard.ino.hex"
+
+windows_destination=$(wslpath -w "$(cd -- "$destination" && pwd)")
+quoted_destination=${windows_destination//\'/\'\'}
+printf 'Upload files copied to: %s\n' "$windows_destination"
+printf '\n%s\n' 'In Windows PowerShell, run:'
+printf "Set-Location -LiteralPath '%s'\n" "$quoted_destination"
+printf '%s\n' '.\setup-windows.ps1  # First Windows upload only; requires arduino-cli on PATH.'
+printf '%s\n' '.\upload.ps1 -Port COM5  # Replace COM5 with the keyboard port while Prog is held.'

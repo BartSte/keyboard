@@ -52,8 +52,9 @@ if [ -z "$port" ] || [ ! -e "$port" ]; then
     echo "No keyboard upload port found."
     echo "Hold Prog, check /dev/ttyACM* or /dev/ttyUSB*, then retry."
     if is_wsl; then
-        echo "On WSL, either attach the USB device with usbipd-win or use a Windows COM mapping."
-        echo "Windows COM5 maps to /dev/ttyS5, COM6 maps to /dev/ttyS6, and so on."
+        printf '%s\n' 'On WSL2, upload from Windows PowerShell with .\upload.ps1 -Port COM5 (replace COM5 with the keyboard port).'
+        printf '%s\n' 'Alternatively, attach the keyboard to WSL with usbipd-win before running this script.'
+        printf '%s\n' 'Windows COM ports do not automatically map to /dev/ttyS* in WSL2. See README.md for the Windows upload steps.'
     fi
     echo "Use UPLOAD_PORT=/dev/ttyACM1 ./upload if the keyboard uses another port."
     exit 1
