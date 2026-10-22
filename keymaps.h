@@ -48,19 +48,6 @@ KEYMAPS(
 ),
 
 
-[NAVIGATION_LEFT] = KEYMAP_STACKED(
-    ___                  ,Key_7             ,Key_2          ,___             ,___,
-    Key_6                ,___               ,Key_3          ,Key_1           ,___,
-    ___                  ,Key_5             ,Key_4          ,___             ,___             ,___,
-    ___                  ,___               ,___            ,___             ,___             ,___,
-
-                          ___               ,___             ,___             ,___             ,___,
-                          ___               ,Key_RCtrl       ,Key_RShift      ,Key_RAlt        ,Key_RGui,
-    ___                  ,___               ,___             ,___             ,___             ,___,
-    ___                  ,___               ,___             ,___             ,___             ,___
-),
-
-
 [NAVIGATION_RIGHT] = KEYMAP_STACKED(
     ___                  ,___               ,___             ,___             ,___,
     Key_LGui             ,Key_LAlt          ,Key_LShift      ,Key_LCtrl       ,___,

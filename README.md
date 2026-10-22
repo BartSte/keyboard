@@ -179,14 +179,28 @@ you can solve this in two ways:
   - `o`: `Win`
 
 - Move to layer on hold:
-  - `f`: `Numpad`
-  - `u`: `Symbols`
-  - `Tab`: `Navigation right`
-  - `Enter`: `Navigation left`
-  - `g`: `F-keys`
+  - `Tab`: `Numpad`
+  - `Space`: `Navigation right`
+  - `Enter`: `Symbols`
+  - `f`: `F-keys`
   - `d`: `Macros right`
   - `h`: `Macros left`
 
+Taps retain the base-layer action. `Backspace`, `g`, and `u` have no hold action.
+Both macro layers keep their existing assignments.
+
+For a window shortcut, hold `a` for Meta and `Tab` for the number layer.
+Then press a digit on the right half. For example, the physical `.` key produces
+`3`, so this chord sends Meta + 3. Meta is the Win/Super modifier.
+The firmware sends the same shortcut on Linux and Windows; the host determines
+its action. The former number layer with automatic Meta is removed.
+
+Hold `f` for F-keys. `F1` through `F9` occupy the same positions as `1` through
+`9` on the number layer. `F10`, `F11`, and `F12` occupy the rightmost column.
+
+In the layer diagrams, blank cells fall through to lower layers. Explicit
+modifiers appear as `GUI`, `Alt`, `Shift`, and `Ctrl`. The base diagram omits
+the two inner keys above the bottom row: left `PrintScreen` and right `Shift+F10`.
 
 ```plaintext
  ### Default Layer: COLEMAK-DH Layout
@@ -204,7 +218,7 @@ you can solve this in two ways:
  ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
  │  !  │  @  │  #  │  $  │  %  │             │     │     │     │     │     │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │  {  │  [  │  (  │  '  │  `  │             │     │     │     │     │     │
+ │  {  │  [  │  (  │  '  │  `  │             │     │Ctrl │Shift│ Alt │ GUI │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  │  }  │  ]  │  )  │  "  │  ~  │             │     │     │     │     │     │
  ├─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┤
@@ -215,7 +229,7 @@ you can solve this in two ways:
  ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
  │     │     │     │     │     │             │  *  │  7  │  8  │  9  │  +  │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │     │     │     │     │     │             │  \  │  4  │  5  │  6  │  -  │
+ │ GUI │ Alt │Shift│Ctrl │     │             │  \  │  4  │  5  │  6  │  -  │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  │     │     │     │     │     │             │  |  │  1  │  2  │  3  │  &  │
  ├─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┤
@@ -226,31 +240,20 @@ you can solve this in two ways:
  ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
  │     │     │     │     │     │             │ Home│PgDwn│PgUp │ End │Play │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │     │     │     │     │     │             │Left │Down │ Up  │Right│     │
+ │ GUI │ Alt │Shift│Ctrl │     │             │Left │Down │ Up  │Right│     │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  │     │     │     │     │     │             │     │     │     │Prev │Next │
  ├─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┤
  │     │     │     │     │     │     │ │     │     │     │     │     │     │
  └─────┴─────┴─────┴─────┴─────┴─────┘ └─────┴─────┴─────┴─────┴─────┴─────┘
 
- ### Navigation Left Layer
- ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
- │     │  7  │  2  │     │     │             │     │     │     │     │     │
- ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │  6  │     │  3  │  1  │     │             │     │     │     │     │     │
- ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │     │  5  │  4  │     │     │             │     │     │     │     │     │
- ├─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┤
- │     │     │     │     │     │     │ │     │     │     │     │     │     │
- └─────┴─────┴─────┴─────┴─────┴─────┘ └─────┴─────┴─────┴─────┴─────┴─────┘
-
  ### Function Keys Layer
  ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
- │     │     │     │     │     │             │  F7 │  F8 │  F9 │ F10 │     │
+ │     │     │     │     │     │             │Pause│  F7 │  F8 │  F9 │ F10 │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │     │     │     │     │     │             │  F4 │  F5 │  F6 │ F11 │     │
+ │ GUI │ Alt │Shift│Ctrl │     │             │ScrLk│  F4 │  F5 │  F6 │ F11 │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │     │     │     │     │     │             │  F1 │  F2 │  F3 │ F12 │     │
+ │     │     │     │     │     │             │ Ins │  F1 │  F2 │  F3 │ F12 │
  ├─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┤
  │     │     │     │     │     │     │ │     │     │     │     │     │     │
  └─────┴─────┴─────┴─────┴─────┴─────┘ └─────┴─────┴─────┴─────┴─────┴─────┘
