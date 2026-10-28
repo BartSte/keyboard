@@ -24,7 +24,8 @@
 #define Key_BrIncr Consumer_DisplayBrightnessIncrement
 #define Key_VolDecr Consumer_VolumeDecrement
 #define Key_VolIncr Consumer_VolumeIncrement
-#define Key_Play Consumer_Play
+#define Key_PlayPause Consumer_PlaySlashPause
+#define Key_Mute Consumer_Mute
 #define Key_Next Consumer_ScanNextTrack
 #define Key_Prev Consumer_ScanPreviousTrack
 

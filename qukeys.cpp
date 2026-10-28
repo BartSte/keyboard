@@ -15,7 +15,7 @@ using namespace kaleidoscope;
 // ___   ___   FKEY    ___   ___               ___   ___   ___   ___   ___
 // GUI   ALT   SHIFT   CTRL  ___               ___   CTRL  SHIFT ALT   GUI
 // ___   ___   ____    MACR  ___   ___   ___   ___   MACL  ___   ___   ___
-// ___   ___   ___     NUM   NAV   ___   ___   ___   SYM   ___   ___   ___
+// ___   ___   ___     NUM   NAV   ___   ___   SHORT SYM   ___   ___   ___
 
 
 void setup_qukeys() {
@@ -42,5 +42,6 @@ void setup_qukeys() {
       // Row 3
       plugin::Qukey(0, KeyAddr(3, 3), ShiftToLayer(NUMPAD)),
       plugin::Qukey(0, KeyAddr(3, 4), ShiftToLayer(NAVIGATION_RIGHT)),
+      plugin::Qukey(0, KeyAddr(3, 7), ShiftToLayer(SHORTCUTS)),
       plugin::Qukey(0, KeyAddr(3, 8), ShiftToLayer(SYMBOLS)))
 }

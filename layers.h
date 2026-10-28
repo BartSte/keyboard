@@ -8,4 +8,5 @@ enum {
   F_KEYS,
   MACROS_LEFT,
   MACROS_RIGHT,
+  SHORTCUTS,
 };

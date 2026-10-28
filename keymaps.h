@@ -54,9 +54,9 @@ KEYMAPS(
     ___                  ,___               ,___             ,___             ,___             ,___,
     ___                  ,___               ,___             ,___             ,___             ,___,
 
-                          Key_Home          ,Key_PageDown    ,Key_PageUp      ,Key_End         ,Key_Play,
+                          Key_Home          ,Key_PageDown    ,Key_PageUp      ,Key_End         ,___,
                           Key_LeftArrow     ,Key_DownArrow   ,Key_UpArrow     ,Key_RightArrow  ,___,
-    ___                  ,___               ,___             ,Key_Prev        ,Key_Next        ,___,
+    ___                  ,___               ,___             ,___             ,___             ,___,
     ___                  ,___               ,___             ,___             ,___             ,___
 ),
 
@@ -96,6 +96,18 @@ KEYMAPS(
                           ___               ,___             ,___             ,___             ,___,
     ___                  ,___               ,___             ,___             ,___             ,___,
     ___                  ,M(M_EQUALS)       ,___             ,RALT(Key_F4)    ,___             ,___
+),
+
+[SHORTCUTS] = KEYMAP_STACKED(
+    ___                  ,___               ,Key_Next        ,Key_PlayPause   ,Key_Prev,
+    Key_LGui             ,Key_LAlt          ,Key_LShift      ,Key_LCtrl       ,Key_Mute,
+    ___                  ,___               ,___             ,___             ,___             ,___,
+    ___                  ,___               ,___             ,___             ,___             ,___,
+
+                          ___               ,___             ,___             ,___             ,___,
+                          ___               ,___             ,___             ,___             ,___,
+    ___                  ,___               ,___             ,___             ,___             ,___,
+    ___                  ,___               ,___             ,___             ,___             ,___
 )
 
 

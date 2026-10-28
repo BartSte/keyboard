@@ -241,13 +241,33 @@ you can solve this in two ways:
 - Move to layer on hold:
   - `Tab`: `Numpad`
   - `Space`: `Navigation right`
+  - `Backspace`: `Shortcuts`
   - `Enter`: `Symbols`
   - `f`: `F-keys`
   - `d`: `Macros right`
   - `h`: `Macros left`
 
-Taps retain the base-layer action. `Backspace`, `g`, and `u` have no hold action.
+Taps retain the base-layer action. `g` and `u` have no hold action.
 Both macro layers keep their existing assignments.
+
+Hold `Backspace` for shortcuts on the left half:
+
+| Base key | Shortcut |
+| --- | --- |
+| `b` | Back (previous track) |
+| `p` | Play/pause |
+| `f` | Forward (next track) |
+| `g` | Mute |
+| `a` | Left GUI (Win/Super) |
+| `r` | Left Alt |
+| `s` | Left Shift |
+| `t` | Left Ctrl |
+
+The modifiers are ordinary keys on this layer. Hold `Backspace`, press and
+release the modifier, then release `Backspace` to send a standalone modifier tap.
+
+The navigation layer contains movement keys and modifiers. Media controls use
+the shortcuts layer. The base brightness, volume, and display keys retain their actions.
 
 For a window shortcut, hold `a` for Meta and `Tab` for the number layer.
 Then press a digit on the right half. For example, the physical `.` key produces
@@ -298,11 +318,23 @@ the two inner keys above the bottom row: left `PrintScreen` and right `Shift+F10
 
  ### Navigation Right Layer
  ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
- │     │     │     │     │     │             │ Home│PgDwn│PgUp │ End │Play │
+ │     │     │     │     │     │             │ Home│PgDwn│PgUp │ End │     │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  │ GUI │ Alt │Shift│Ctrl │     │             │Left │Down │ Up  │Right│     │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │     │     │     │     │     │             │     │     │     │Prev │Next │
+ │     │     │     │     │     │             │     │     │     │     │     │
+ ├─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┤
+ │     │     │     │     │     │     │ │     │     │     │     │     │     │
+ └─────┴─────┴─────┴─────┴─────┴─────┘ └─────┴─────┴─────┴─────┴─────┴─────┘
+
+ ### Shortcuts Layer (hold Backspace)
+ ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
+ │     │     │Next │Play/│Prev │             │     │     │     │     │     │
+ │     │     │     │Pause│     │             │     │     │     │     │     │
+ ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ │ GUI │ Alt │Shift│Ctrl │Mute │             │     │     │     │     │     │
+ ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ │     │     │     │     │     │             │     │     │     │     │     │
  ├─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┤
  │     │     │     │     │     │     │ │     │     │     │     │     │     │
  └─────┴─────┴─────┴─────┴─────┴─────┘ └─────┴─────┴─────┴─────┴─────┴─────┘
